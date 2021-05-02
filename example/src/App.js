@@ -7,8 +7,9 @@ import {
   useBottomTabBarHeight,
 } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import CustomTabBar from 'react-native-custom-tabbar';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import CustomTabBar, { ActionButton as AB } from 'react-native-custom-tabbar';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ActionButton from 'react-native-action-button';
 
 const Tab = createBottomTabNavigator();
 
@@ -35,13 +36,20 @@ function Settings() {
 }
 
 export default function App() {
-  // const height = useBottomTabBarHeight();
-  // console.warn(height)
-  const [isFull, setisFull] = React.useState(false);
+  // const [pressed, setpressed] = React.useState(false);
   return (
     <NavigationContainer>
       <Tab.Navigator
-        tabBar={(props) => <CustomTabBar {...props} />}
+        tabBar={(props) => (
+          <CustomTabBar
+            {...props}
+            type={'top-line'}
+            focusAnimation={'zoomIn'}
+            actionButtonIcon={
+              <Icon name="add-outline" size={25} color={'black'} />
+            }
+          />
+        )}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -50,25 +58,30 @@ export default function App() {
               iconName = focused
                 ? 'ios-information-circle'
                 : 'ios-information-circle-outline';
+            } else if (route.name == 'profile') {
+              iconName = 'person-outline';
             } else {
               iconName = focused ? 'ios-list-box' : 'ios-list';
             }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Icon name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
           activeTintColor: 'blue',
           inactiveTintColor: 'gray',
+          // labelPosition: 'beside-icon',
           // activeBackgroundColor: 'blue',
           // inactiveBackgroundColor: 'gray',
           // showLabel: false,
+          // labelStyle: { color: 'red' },
         }}
         // initialRouteName={'settings'}
       >
         <Tab.Screen name="home" component={Home} />
         <Tab.Screen name="profile" component={Profile} />
         <Tab.Screen name="settings" component={Settings} />
+        <Tab.Screen name="settings2" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
   );
