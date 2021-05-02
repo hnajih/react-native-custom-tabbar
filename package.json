@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "http://jsfactory.co/react-native-custom-tabbar",
+  "repository": "https://github.com/hnajih/react-native-custom-tabbar",
   "author": "hamza <hamza@jsfactory.co> (http://jsfactory.co/)",
   "license": "MIT",
   "bugs": {
-    "url": "http://jsfactory.co/react-native-custom-tabbar/issues"
+    "url": "https://github.com/hnajih/react-native-custom-tabbar/issues"
   },
-  "homepage": "http://jsfactory.co/react-native-custom-tabbar#readme",
+  "homepage": "https://github.com/hnajih/react-native-custom-tabbar#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
