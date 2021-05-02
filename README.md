@@ -11,11 +11,17 @@ npm install react-native-custom-tabbar
 ## Usage
 
 ```js
+import {
+createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import CustomTabbar from "react-native-custom-tabbar";
 
 // ...
 
-const result = await CustomTabbar.multiply(3, 7);
+const Tab = createBottomTabNavigator();
+
+return <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />}/>
+
 ```
 
 ## Contributing
